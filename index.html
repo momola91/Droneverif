@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drone Vérif - Inspection Technique & Maintenance de Drones</title>
+    <title>Drone Vérif - Inspection Technique, IA & Maintenance</title>
     <!-- Google Fonts & FontAwesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -108,6 +108,7 @@
             transition: background 0.3s;
             border: none;
             cursor: pointer;
+            display: inline-block;
         }
 
         .btn:hover {
@@ -123,7 +124,7 @@
             display: block;
         }
 
-        /* --- Hero Section --- */
+        /* --- Standard Hero Banner (Remplacement de la vidéo d'accueil par un bandeau bleu) --- */
         .hero {
             background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
             color: var(--white);
@@ -131,9 +132,11 @@
             text-align: center;
         }
 
-        .hero h1 {
-            font-size: 2.8rem;
+        .hero h1.single-line-title {
+            font-size: clamp(1.2rem, 3.1vw, 2.7rem);
+            white-space: nowrap;
             margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .hero p {
@@ -141,6 +144,52 @@
             max-width: 850px;
             margin: 0 auto 2rem;
             opacity: 0.9;
+        }
+
+        /* --- Image Hero Banner pour les pages de détails d'inspection --- */
+        .hero-image-banner {
+            position: relative;
+            width: 100%;
+            height: 45vh;
+            min-height: 350px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.85) 100%);
+            z-index: 1;
+        }
+
+        .hero-image-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .hero-image-content h1 {
+            font-size: 2.6rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-image-content p {
+            font-size: 1.15rem;
+            opacity: 0.95;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
         }
 
         /* --- Target Audience Tags --- */
@@ -189,6 +238,8 @@
             border-radius: 12px;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
@@ -204,6 +255,110 @@
         .card h3 {
             margin-bottom: 1rem;
             color: var(--dark);
+        }
+
+        .card-link {
+            margin-top: auto;
+            padding-top: 1rem;
+            color: var(--secondary);
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .card-link:hover {
+            color: var(--primary);
+        }
+
+        /* --- Style Service Detail Content --- */
+        .service-detail-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .service-detail-box {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .service-detail-box h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .service-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .service-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .service-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--secondary);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary);
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 2rem;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            color: var(--primary);
+        }
+
+        /* --- Responsive Video Container (YouTube Embed Corrige) --- */
+        .video-box-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            margin: 1.5rem 0;
+            background-color: var(--dark);
+        }
+
+        .video-box-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         /* --- Style Matériel / Hardware Cards --- */
@@ -345,32 +500,115 @@
             gap: 0.5rem;
         }
 
-        /* --- Contact Form --- */
-        .contact-form {
+        /* --- Section IA --- */
+        .ai-feature-card {
             background: var(--white);
-            padding: 2.5rem;
             border-radius: 12px;
-            max-width: 600px;
-            margin: 0 auto;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--secondary);
+        }
+
+        .ai-feature-card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .ai-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .ai-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .ai-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* --- Modal Demande de Devis --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: var(--dark);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
+            color: var(--dark);
+            font-size: 0.9rem;
         }
 
-        .form-group input, .form-group textarea, .form-group select {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 0.75rem;
             border: 1px solid #CBD5E1;
             border-radius: 6px;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--secondary);
         }
 
         /* --- Footer --- */
@@ -386,6 +624,7 @@
             .nav-container { flex-direction: column; text-align: center; gap: 1rem; }
             .nav-right { justify-content: center; }
             .logo-img { height: 120px; }
+            .service-detail-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 900px) {
@@ -394,9 +633,25 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
+            .hero h1.single-line-title { font-size: 1.4rem; white-space: normal; }
+            .hero h1, .hero-image-content h1 { font-size: 2rem; }
             nav ul { flex-direction: column; gap: 0.75rem; }
             .logo-img { height: 100px; }
+        }
+        .photo-box-container {
+            width: 100%;
+            max-height: 450px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .dock-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
     </style>
 </head>
@@ -414,40 +669,45 @@
                         <li><a onclick="showPage('home')" id="nav-home" class="active">Accueil</a></li>
                         <li><a onclick="showPage('about')" id="nav-about">À propos</a></li>
                         <li><a onclick="showPage('inspection')" id="nav-inspection">Inspection Technique</a></li>
+                        <li><a onclick="showPage('ai')" id="nav-ai">IA & Diagnostics</a></li>
                         <li><a onclick="showPage('maintenance')" id="nav-maintenance">Entretien & Réparation</a></li>
-                        <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
                     </ul>
                 </nav>
-                <button class="btn" onclick="showPage('contact')">Demander un Devis</button>
+                <button class="btn" onclick="openQuoteModal()"><i class="fa-solid fa-file-invoice"></i> Demander un devis</button>
             </div>
         </div>
     </header>
 
     <!-- PAGE ACCUEIL -->
     <div id="home" class="page active">
+        <!-- Banner Hero Bleu (Remplace la vidéo) -->
         <section class="hero">
-            <h1>Expertise Aérienne & Maintenance Drone sur Mesure</h1>
+            <h1 class="single-line-title">Expertise Aérienne & Maintenance Drone sur Mesure</h1>
             <p>Drone Vérif réalise pour vos actifs des diagnostics techniques poussés et garantit la conformité opérationnelle de votre flotte.</p>
-            <button class="btn" onclick="showPage('inspection')">Inspection technique</button>
-            <button class="btn" style="background:transparent; border:2px solid white; margin-left:10px;" onclick="showPage('maintenance')">Atelier Réparation</button>
+            <button class="btn" onclick="openQuoteModal()">Demander un devis gratuit</button>
+            <button class="btn" style="background:transparent; border:2px solid white; margin-left:10px;" onclick="showPage('inspection')">Inspection technique</button>
         </section>
 
         <section class="container">
-            <h2 class="section-title">Nos Deux Domaines d'Expertise</h2>
+            <h2 class="section-title">Nos Domaines d'Expertise</h2>
             <div class="grid">
                 <div class="card">
                     <i class="fa-solid fa-magnifying-glass-location"></i>
                     <h3>Inspection Technique</h3>
-                    <p>Captation haute définition, inspection de toitures/façades, suivi de chantier BTP, modélisation 3D (Photogrammétrie), bilan thermique de bâtiment et d'installations industrielles.</p>
-                    <br>
-                    <a onclick="showPage('inspection')" style="color:var(--secondary); font-weight:bold; cursor:pointer;">En savoir plus →</a>
+                    <p>Captation haute définition, inspection BTP, inspection photovoltaïque, inspection d'éoliennes, inspection d'ouvrages d'art, inspection industrielle.</p>
+                    <a onclick="showPage('inspection')" class="card-link">En savoir plus →</a>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-brain"></i>
+                    <h3>Analyse & Traitement IA</h3>
+                    <p>Détection automatique d'anomalies sur installations photovoltaïques, éoliennes. Vérifications d'avancement de chantier. Déploiement de stations autonomes DJI Dock 3.</p>
+                    <a onclick="showPage('ai')" class="card-link">En savoir plus →</a>
                 </div>
                 <div class="card">
                     <i class="fa-solid fa-screwdriver-wrench"></i>
                     <h3>Entretien & Réparation</h3>
                     <p>Révision préventive, réparation d'urgence, calibration et maintien des registres de maintenance réglementaires (MANEX).</p>
-                    <br>
-                    <a onclick="showPage('maintenance')" style="color:var(--secondary); font-weight:bold; cursor:pointer;">En savoir plus →</a>
+                    <a onclick="showPage('maintenance')" class="card-link">En savoir plus →</a>
                 </div>
             </div>
         </section>
@@ -455,7 +715,7 @@
 
     <!-- PAGE À PROPOS / FONDATEUR -->
     <div id="about" class="page">
-        <section class="hero" style="background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);">
+        <section class="hero">
             <h1>L'Expertise Technique & Métier</h1>
             <p>Une double compétence unique alliant la maîtrise du BTP, de l'architecture et du vecteur drone.</p>
         </section>
@@ -474,7 +734,7 @@
                             Diplômé en Architecture et fort de plus de 8 ans d'expérience dans l'Immobilier neuf et le BTP, j'ai fondé <strong>Drone Vérif</strong> avec une conviction : l'inspection par drone exige d'abord une parfaite compréhension des structures et du bâtiment.
                         </p>
                         <p style="margin-bottom:1rem; color:var(--dark);">
-                            Nous ne faisons pas que piloter des aéronefs. Nous répondons à vos besoins en suivant vos actifs, identifiant les désordres techniques grâce à notre savoir-faire, des outils de pointe et l'intelligence artificielle. Afin de vous garantir des opérations professionnelles et strictement conformes, nous sommes certifiés afin de mener des opérations de diagnostics et d'inspections en tant que télépilotes professionnels.
+                            Nous ne faisons pas que piloter des aéronefs. Nous répondons à vos besoins en suivant vos actifs, identifiant les désordres techniques grâce à notre savoir-faire, des outils de pointe et l'intelligence artificielle. Afin de vous garantir des opérations professionnelles et strictly conformes, nous sommes certifiés afin de mener des opérations de diagnostics et d'inspections en tant que télépilotes professionnels.
                         </p>
                         
                         <div class="about-highlights">
@@ -488,7 +748,7 @@
                             </div>
                             <div class="highlight-item">
                                 <h4>Analyse par logiciels & IA</h4>
-                                <p>Photogrammétrie et Thermographie Infrarouge.</p>
+                                <p>Photogrammétrie, Thermographie & Docks automatisés.</p>
                             </div>
                             <div class="highlight-item">
                                 <h4>Atelier Hardware & FPV</h4>
@@ -501,53 +761,82 @@
         </section>
     </div>
 
-    <!-- PAGE INSPECTION TECHNIQUE -->
+    <!-- PAGE INSPECTION TECHNIQUE (HUB PRINCIPAL) -->
     <div id="inspection" class="page">
         <section class="hero" style="background: linear-gradient(135deg, #0F172A 0%, #0284C7 100%);">
             <h1>Inspection Technique & Diagnostique par Drone</h1>
-            <p>Accédez aux zones complexes sans risque humain. Données précises pour le BTP, le génie civil et l'énergie.</p>
+            <p>Accédez aux zones complexes sans risque humain. Données précises pour le BTP, le photovoltaïque, l'éolien, le génie civil, et l'industrie.</p>
             
             <div class="target-box">
+                <span class="target-tag"><i class="fa-solid fa-fan"></i> Parcs Solaires et Éoliens</span>
                 <span class="target-tag"><i class="fa-solid fa-user-shield"></i> Experts d'Assurance</span>
                 <span class="target-tag"><i class="fa-solid fa-building"></i> Syndics de Copropriété</span>
                 <span class="target-tag"><i class="fa-solid fa-helmet-safety"></i> BTP & Génie Civil</span>
-                <span class="target-tag"><i class="fa-solid fa-house-laptop"></i> Acteurs de l'Immobilier</span>
                 <span class="target-tag"><i class="fa-solid fa-city"></i> Gestionnaires de Patrimoine</span>
             </div>
         </section>
 
         <section class="container">
-            <h2 class="section-title">Nos Prestations</h2>
+            <h2 class="section-title">Découvrez nos prestations détaillées</h2>
             <div class="grid">
+                <!-- Position 1 : Inspection Visuelle & Structurelle -->
                 <div class="card">
                     <i class="fa-solid fa-building-circle-check"></i>
-                    <h3>Vérification et Inspection technique</h3>
+                    <h3>1. Inspection Visuelle & Structurelle</h3>
                     <p>Contrôle visuel haute résolution pour toitures, façades, pylônes, ponts et ouvrages d'art difficilement accessibles.</p>
+                    <a onclick="showPage('service-visuelle')" class="card-link">Consulter le détail de la prestation →</a>
                 </div>
 
+                <!-- Position 2 : Audit Photovoltaïque & Centrales Solaires -->
+                <div class="card">
+                    <i class="fa-solid fa-solar-panel"></i>
+                    <h3>2. Audit Photovoltaïque & Centrales Solaires</h3>
+                    <p>Diagnostic thermique et visuel pour détecter les cellules fracturées, diodes en court-circuit et baisses de rendement.</p>
+                    <a onclick="showPage('service-photovoltaique')" class="card-link">Consulter le détail de la prestation →</a>
+                </div>
+
+                <!-- Position 3 : Inspection d'Éoliennes -->
+                <div class="card">
+                    <i class="fa-solid fa-fan"></i>
+                    <h3>3. Inspection d'Éoliennes</h3>
+                    <p>Diagnostic de pales, nacelles et mâts d'éoliennes. Repérage des pannes, décollements, impacts de foudre et usure de surface.</p>
+                    <a onclick="showPage('service-eolienne')" class="card-link">Consulter le détail de la prestation →</a>
+                </div>
+
+                <!-- Position 4 : Photogrammétrie & Modélisation 3D -->
                 <div class="card">
                     <i class="fa-solid fa-cubes"></i>
-                    <h3>Photogrammétrie & Modélisation 3D</h3>
+                    <h3>4. Photogrammétrie & Modélisation 3D</h3>
                     <p>Création d'orthomosaïques géoréférencées, nuages de points et modèles 3D pour le suivi de chantier et calculs de cubatures.</p>
+                    <a onclick="showPage('service-photogrammetrie')" class="card-link">Consulter le détail de la prestation →</a>
                 </div>
 
+                <!-- Position 5 : Inspection de Chantier -->
+                <div class="card">
+                    <i class="fa-solid fa-bars-progress"></i>
+                    <h3>5. Inspection de Chantier</h3>
+                    <p>Détection de défauts, levée de doute, relevés périodiques, contrôle de conformité vs CAO/BIM, suivi d'avancement, calculs de cubature.</p>
+                    <a onclick="showPage('service-chantier')" class="card-link">Consulter le détail de la prestation →</a>
+                </div>
+
+                <!-- Position 6 (Dernier) : Thermographie Infrarouge -->
                 <div class="card">
                     <i class="fa-solid fa-temperature-arrow-up"></i>
-                    <h3>Thermographie Infrarouge</h3>
-                    <p>Détection des ponts thermiques, déperditions d'énergie, infiltrations d'eau et contrôle des installations industrielles ou photovoltaïques.</p>
+                    <h3>6. Thermographie Infrarouge</h3>
+                    <p>Détection des ponts thermiques, déperditions d'énergie, infiltrations d'eau et contrôle du bâti.</p>
+                    <a onclick="showPage('service-thermographie')" class="card-link">Consulter le détail de la prestation →</a>
                 </div>
             </div>
 
             <!-- SECTION NOTRE MATÉRIEL -->
             <h2 class="section-title" style="margin-top: 5rem;">Notre Flotte & Matériel</h2>
             <div class="equipment-grid">
-                
                 <div class="equipment-card">
                     <img src="277589_grande.jpg" alt="DJI Matrice 400" class="equipment-img">
                     <div class="equipment-body">
                         <h4>DJI Matrice 400</h4>
-                        <p>Vecteur lourd d'intervention haute autonomie avec radar mmWave. Conçu pour les relevés de structures complexes et le suivi de grands chantiers BTP.</p>
-                        <span class="equipment-badge">Inspection Lourd & Grands Chantiers</span>
+                        <p>Vecteur lourd d'intervention haute autonomie avec radar mmWave. Conçu pour les relevés d'éoliennes, de structures complexes et le suivi de grands chantiers.</p>
+                        <span class="equipment-badge">Inspection Lourd & Éolien</span>
                     </div>
                 </div>
 
@@ -577,7 +866,342 @@
                         <span class="equipment-badge">Espaces Confinés & Intérieurs</span>
                     </div>
                 </div>
+            </div>
+        </section>
+    </div>
 
+    <!-- SOUS-PAGE DÉTAILLÉE 1 : INSPECTION VISUELLE (IMAGE COHÉRENTE : FAÇADE & BÂTIMENT) -->
+    <div id="service-visuelle" class="page">
+        <section class="hero-image-banner" style="background-image: url('inspectionvisuelle.jpg');">
+            <div class="hero-image-overlay"></div>
+            <div class="hero-image-content">
+                <h1>Inspection Visuelle & Contrôle de Structures</h1>
+                <p>Diagnostic haute résolution des toitures, façades, structures et ouvrages d'art sans installation d'échafaudages.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <a onclick="showPage('inspection')" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Retour aux prestations d'inspection</a>
+
+            <div class="service-detail-grid">
+                <div>
+                    <div class="service-detail-box">
+                        <h3><i class="fa-solid fa-eye"></i> Objectifs & Méthodologie</h3>
+                        <p>L'inspection visuelle par drone offre une alternative rapide, sécurisée et économique à la mise en place d'engins d'élévation (nacelles, cordistes, échafaudages). Grâce à des téléobjectifs jusqu'à 112x et des capteurs photo 48 MP, nous détectons le moindre défaut structurel à plusieurs dizaines de mètres de distance.</p>
+                        <ul class="service-list">
+                            <li><strong>Toitures & Couvertures :</strong> Identification des tuiles cassées, ardoises glissées, éléments de zinguerie défectueux, chéneaux obstrués et joints de dilatation altérés.</li>
+                            <li><strong>Façades & Bâtiments :</strong> Détection du faïençage, des fissures, de l'effritement du béton (spalling), du décollement d'enduit et des sinistres post-intempéries.</li>
+                            <li><strong>Ouvrages d'Art & Génie Civil :</strong> Relevé d'états sur ponts, viaducs, pylônes haute tension, cheminées d'usines et châteaux d'eau.</li>
+                            <li><strong>Lieux confinés / Intérieurs :</strong> Utilisation de nos drones FPV sécurisés avec cage de protection pour inspecter les charpentes, silos, structures sous-toiture ou gaines techniques.</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-detail-box">
+                        <h3><i class="fa-solid fa-file-contract"></i> Livrables Fournis</h3>
+                        <ul class="service-list">
+                            <li>Galerie complète de photos géoréférencées ultra-haute résolution (4K / 48MP).</li>
+                            <li>Séquences vidéo ultra-stabilisées enregistrées en 4K.</li>
+                            <li>Rapport d'expertise structuré avec localisation exacte de chaque défaut sur plan/carte.</li>
+                            <li>Fiche de synthèse pour l'expert d'assurance, le syndic ou le gestionnaire d'actifs.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 style="color:var(--primary); margin-bottom:1rem;">Informations Clés</h3>
+                    <p style="margin-bottom:1rem; font-size:0.95rem;"><strong>Matériel utilisé :</strong> DJI Matrice 4E Enterprise, DJI Avata 2 (Intérieur/FPV).</p>
+                    <p style="margin-bottom:1rem; font-size:0.95rem;"><strong>Secteurs :</strong> Propriétaires/Gestionnaires d'actifs, BTP, Immobilier, Syndics, Assurances, Collectivités.</p>
+                    <p style="margin-bottom:1.5rem; font-size:0.95rem;"><strong>Délai moyen de rapport :</strong> 24h à 48h après vol.</p>
+                    <button class="btn" onclick="openQuoteModal()" style="width: 100%;">Demander un devis</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SOUS-PAGE DÉTAILLÉE 2 : INSPECTION ÉOLIENNE (IMAGE COHÉRENTE : ÉOLIENNES) -->
+    <div id="service-eolienne" class="page">
+        <section class="hero-image-banner" style="background-image: url('inspectioneolienne.jpg');">
+            <div class="hero-image-overlay"></div>
+            <div class="hero-image-content">
+                <h1>Inspection & Diagnostic d'Éoliennes par Drone</h1>
+                <p>Inspection haute précision des pales, nacelles et mâts sans immobilisation prolongée des aérogénérateurs.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <a onclick="showPage('inspection')" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Retour aux prestations d'inspection</a>
+
+            <div class="service-detail-grid">
+                <div>
+                    <div class="service-detail-box">
+                        <h3><i class="fa-solid fa-fan"></i> Inspection Complète des Aérogénérateurs</h3>
+                        <p>L'inspection des pales d'éoliennes par drone permet d'identifier l'usure de surface et les anomalies internes invisibles depuis le sol. Nos drones équipés de zooms optiques puissants et de capteurs thermiques réalisent des relevés complets en un temps record.</p>
+                        <ul class="service-list">
+                            <li><strong>Inspection des Pales (4 faces) :</strong> Détection de l'érosion du bord d'attaque, delamination, micro-fissures, décollement du gelcoat et impacts de foudre.</li>
+                            <li><strong>Contrôle de la Nacelle & du Mât :</strong> Vérification de l'état des peintures, fuites d'huile, corrosion des assemblages boulonnés et état des anémomètres.</li>
+                            <li><strong>Thermographie en Fonctionnement :</strong> Analyse des échauffements anormaux au niveau du multiplicateur, du générateur et des roulements.</li>
+                            <li><strong>Réduction des Temps d'Arrêt :</strong> Inspection d'une éolienne complète en moins de 45 minutes pour maximiser la production énergétique.</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-detail-box">
+                        <h3><i class="fa-solid fa-file-invoice"></i> Livrables & Rapports d'Inspection</h3>
+                        <ul class="service-list">
+                            <li>Cartographie complète des 3 pales déroulées en haute résolution.</li>
+                            <li>Rapport d'anomalies géolocalisées avec cotation de sévérité (Catégories 1 à 5).</li>
+                            <li>Recommandations d'interventions prioritaires pour les équipes de maintenance cordistes.</li>
+                            <li>Intégration des données dans vos plateformes de gestion d'actifs (Asset Management).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 style="color:var(--primary); margin-bottom:1rem;">Informations Clés</h3>
+                    <p style="margin-bottom:1rem; font-size:0.95rem;"><strong>Matériel utilisé :</strong> DJI Matrice 400 / 4E Enterprise avec téléobjectif 56x.</p>
+                    <p style="margin-bottom:1rem; font-size:0.95rem;"><strong>Temps d'immobilisation :</strong> ~45 minutes par éolienne.</p>
+                    <p style="margin-bottom:1.5rem; font-size:0.95rem;"><strong>Livrables :</strong> Rapport normé sous 48h.</p>
+                    <button class="btn" onclick="openQuoteModal()" style="width: 100%;">Demander un devis</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SOUS-PAGE DÉTAILLÉE 3 : PHOTOGRAMMÉTRIE (IMAGE COHÉRENTE : TOPOGRAPHIE / CARTOGRAPHIE) -->
+    <div id="service-photogrammetrie" class="page">
+        <section class="hero-image-banner" style="background-image: url('photogrametrie.jpg');">
+            <div class="hero-image-overlay"></div>
+            <div class="hero-image-content">
+                <h1>Photogrammétrie & Modélisation 3D</h1>
+                <p>Transformation de données aériennes en modèles 3D centimétriques, cartes géoréférencées et relevés topographiques.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <a onclick="showPage('inspection')" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Retour aux prestations d'inspection</a>
+
+            <div class="service-detail-grid">
+                <div>
+                    <div class="service-detail-box">
+                        <h3><i class="fa-solid fa-cubes"></i> Qu'est-ce que la Photogrammétrie Drone ?</h3>
+                        <p>La photogrammétrie consiste à capturer des centaines d'images aériennes se chevauchant avec une précision millimétrique. Nos logiciels d'analyse reconstruisent ensuite virtuellement le terrain ou la structure en 3D avec une géolocalisation exacte.</p>
+                        <ul class="service-list">
+                            <li><strong>Orthomosaïques 2D géoréférencées :</strong> Assemblage d'images haute résolution corrigées de toute distorsion pour obtenir une carte métrique ultra-précise de votre site.</li>
+                            <li><strong>Nuages de points 3D (Point Cloud) :</strong> Génération de fichiers d'ingénierie (LAS, OBJ, PLY) réutilisables dans vos logiciels CAD/BIM (AutoCAD, Revit, QGIS).</li>
+                            <li><strong>Calculs de Cubatures & MNT/MNC :</strong> Mesure automatisée de stocks de matériaux (carrières, chantiers BTP, terrassements) avec volume de remblai et déblai.</li>
+                            <li><strong>Modèles Numériques de Terrain (MNT) :</strong> Analyse de relief, gestion des écoulements d'eau et relevés topographiques pour géomètres et urbanistes.</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-detail-box">
+                        <h3><i class="fa-solid fa-download"></i> Formats d'Exportation</h3>
+                        <ul class="service-list">
+                            <li>Orthophotos géotiff, DWG, DXF, SHP.</li>
+                            <li>Nuages de points LAS, LAZ, PTS, E57.</li>
+                            <li>Maquettes numériques 3D texturées OBJ, FBX, 3MX.</li>
+                            <li>Rapport volumétrique complet avec tolérances et marges d'erreur centimétriques.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 style="color:var(--primary); margin-bottom:1rem;">Informations Clés</h3>
+                    <p style="margin-bottom:1rem; font-size:0.95rem;"><strong>Matériel utilisé :</strong> DJI Matrice 4E à obturateur mécanique, RTK/PPK centimétrique.</p>
+                    <p style="margin-bottom:1rem; font-size:0.95rem;"><strong>Précision :</strong> Jusqu'à 1 à 2 cm/pixel (selon altitude et cibles GCP).</p>
+                    <p style="margin-bottom:1.5rem; font-size:0.95rem;"><strong>Délai de traitement :</strong> 48h à 72h.</p>
+                    <button class="btn" onclick="openQuoteModal()" style="width: 100%;">Demander un devis</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SOUS-PAGE DÉTAILLÉE 4 : THERMOGRAPHIE (IMAGE COHÉRENTE : CAMÉRA THERMIQUE / BÂTIMENT) -->
+    <div id="service-thermographie" class="page">
+        <section class="hero-image-banner" style="background-image: url('thermographieinfrarouge.jpg');">
+            <div class="hero-image-overlay"></div>
+            <div class="hero-image-content">
+                <h1>Thermographie Infrarouge Aérienne</h1>
+                <p>Révélez l'invisible : déperditions énergétiques, ponts thermiques, humidité et fuites d'isolation.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <a onclick="showPage('inspection')" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Retour aux prestations d'inspection</a>
+
+            <div class="service-detail-grid">
+                <div>
+                    <div class="service-detail-box">
+                        <h3><i class="fa-solid fa-temperature-high"></i> Diagnostic Thermique du Bâtiment</h3>
+                        <p>Grâce à des capteurs infrarouges radiométriques de haute sensibilité thermique (NETD < 50mK), nos drones enregistrent la température exacte de chaque pixel de la structure pour mettre en évidence les anomalies invisibles à l'œil nu.</p>
+                        <ul class="service-list">
+                            <li><strong>Bilan d'Isolation & Déperditions :</strong> Repérage des fuites de chaleur sur toitures, combles, bardages et jonctions de maçonnerie.</li>
+                            <li><strong>Infiltrations d'Eau & Humidité :</strong> Cartographie des zones d'accumulation d'humidité sous étanchéité de toitures terrasses avant qu'elles ne provoquent des dégâts majeurs.</li>
+                            <li><strong>Réseaux de Chaleur & Électricité :</strong> Contrôle des surchauffes sur transformateurs, câbles, gaines techniques et installations industrielles.</li>
+                            <li><strong>Ponts Thermiques :</strong> Analyse complète des faiblesses d'enveloppe du bâtiment pour la rénovation énergétique.</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-detail-box">
+                        <h3><i class="fa-solid fa-clipboard-check"></i> Livrables & Rapport Thermique</h3>
+                        <ul class="service-list">
+                            <li>Clichés radiométriques analysables avec palettes thermiques adaptées (Iron, Rainbow, Isothermes).</li>
+                            <li>Superposition d'images thermiques et visuelles (Mode MSX / Dual Light).</li>
+                            <li>Rapport d'audit thermique indiquant les Deltas de température et les recommandations de travaux prioritaires.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 style="color:var(--primary); margin-bottom:1rem;">Informations Clés</h3>
+                    <p style="margin-bottom:1rem; font-size:0.95rem;"><strong>Matériel utilisé :</strong> DJI Matrice 4T Thermal Radiométrique.</p>
+                    <p style="margin-bottom:1rem; font-size:0.95rem;"><strong>Conditions de vol :</strong> Vol de nuit ou tôt le matin (Delta thermique nécessaire > 10°C).</p>
+                    <p style="margin-bottom:1.5rem; font-size:0.95rem;"><strong>Délai de rapport :</strong> 48h.</p>
+                    <button class="btn" onclick="openQuoteModal()" style="width: 100%;">Demander un devis</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SOUS-PAGE DÉTAILLÉE 5 : PHOTOVOLTAÏQUE (IMAGE COHÉRENTE : PARC PANNEAUX SOLAIRES) -->
+    <div id="service-photovoltaique" class="page">
+        <section class="hero-image-banner" style="background-image: url('photovoltaique.jpg');">
+            <div class="hero-image-overlay"></div>
+            <div class="hero-image-content">
+                <h1>Audit & Inspection Photovoltaïque</h1>
+                <p>Optimisez la rentabilité et la sécurité de vos centrales solaires et toitures photovoltaïques par drone & IA.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <a onclick="showPage('inspection')" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Retour aux prestations d'inspection</a>
+
+            <div class="service-detail-grid">
+                <div>
+                    <div class="service-detail-box">
+                        <h3><i class="fa-solid fa-solar-panel"></i> Détection d'Anomalies sur Parcs Solaires</h3>
+                        <p>Une cellule défectueuse ou une diode en court-circuit peut entraîner des pertes de rendement massives, voire des risques d'incendie. L'inspection thermographique par drone permet de scanner des milliers de panneaux par heure avec une précision chirurgicale.</p>
+                        <ul class="service-list">
+                            <li><strong>Détection des Hotspots (Points Chauds) :</strong> Identification immédiate des cellules bloquées ou fissurées qui surchauffent.</li>
+                            <li><strong>Anomalies de Chaînes (Strings) :</strong> Repérage des strings ouverts, fusibles grillés ou problèmes d'onguleurs.</li>
+                            <li><strong>Diodes de By-Pass :</strong> Cartographie des sous-chaînes de modules hors service.</li>
+                            <li><strong>Etat des panneaux :</strong> Identification d'éclats, de fissures ou de saletés diminuant la performance des panneaux.</li>
+                            <li><strong>Analyse IA & Cartographie :</strong> Automatisation du traitement des images pour géolocaliser chaque panneau défectueux au numéro près.</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-detail-box">
+                        <h3><i class="fa-solid fa-chart-line"></i> Résultats & Livrables</h3>
+                        <ul class="service-list">
+                            <li>Orthomosaïque thermique certifiée de l'ensemble du parc/toiture.</li>
+                            <li>Rapport normé selon la norme IEC 62446-3 pour les garanties constructeurs.</li>
+                            <li>Fichier de localisation GPS de chaque panneau nécessitant une maintenance ou un remplacement.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 style="color:var(--primary); margin-bottom:1rem;">Informations Clés</h3>
+                    <p style="margin-bottom:1rem; font-size:0.95rem;"><strong>Matériel utilisé :</strong> DJI Matrice 4T Thermal + Traitement logiciel IA.</p>
+                    <p style="margin-bottom:1rem; font-size:0.95rem;"><strong>Rendement :</strong> Jusqu'à 10 à 20 MWc inspectés par jour.</p>
+                    <p style="margin-bottom:1.5rem; font-size:0.95rem;"><strong>Norme :</strong> Conformité ISO / IEC 62446-3.</p>
+                    <button class="btn" onclick="openQuoteModal()" style="width: 100%;">Demander un devis</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SOUS-PAGE DÉTAILLÉE 6 : INSPECTION DE CHANTIER (IMAGE COHÉRENTE : CHANTIER BTP / GRUE) -->
+    <div id="service-chantier" class="page">
+        <section class="hero-image-banner" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80');">
+            <div class="hero-image-overlay"></div>
+            <div class="hero-image-content">
+                <h1>Inspection de chantier</h1>
+                <p>Réalisez des levées de doutes, vérifiez l'avancement de vos projets BTP, valorisez vos réalisations et sécurisez vos chantiers.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <a onclick="showPage('inspection')" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Retour aux prestations d'inspection</a>
+
+            <div class="service-detail-grid">
+                <div>
+                    <div class="service-detail-box">
+                        <h3><i class="fa-solid fa-bars-progress"></i> Suivi Périodique pour le BTP</h3>
+                        <p>Grâce à la programmation de vols autonomes automatisés, nos drones reproduisent exactement les mêmes trajectoires de vol mois après mois. Cela vous garantit une comparaison rigoureuse de l'avancement du chantier.</p>
+                        <ul class="service-list">
+                            <li><strong>Levée de doute :</strong> Un défaut à constater ou vérifier, pas besoin d'échafaudage ou de nacelle. Le drone effectuera la levée de doute en toute sécurité.</li>
+                            <li><strong>Contrôle d'Avancement des Travaux :</strong> Suivi des étapes clés (terrassement, fondations, gros œuvre, hors d'eau / hors d'air, aménagement extérieur).</li>
+                            <li><strong>Gestion des stock & Sécurité :</strong> Vérification de l'organisation de la base vie, du stockage des matériaux et du respect des périmètres de sécurité.</li>
+                            <li><strong>Lien avec les plans CAO, la Maquette BIM :</strong> Comparaison directe entre les relevés aériens et les plans d'exécution.</li>                            
+                        </ul>
+                    </div>
+
+                    <div class="service-detail-box">
+                        <h3><i class="fa-solid fa-film"></i> Contenu des Livrables</h3>
+                        <ul class="service-list">
+                            <li>Dossier photo 4K daté, géoréférencé et archivé par phase de chantier.</li>
+                            <li>Superposition d'orthophoto avec les plans d'exécution metant en évidence les écarts de construction.</li>
+                            <li>Plateforme de visualisation en ligne sécurisée pour vos équipes et maîtres d'ouvrage.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 style="color:var(--primary); margin-bottom:1rem;">Informations Clés</h3>
+                    <p style="margin-bottom:1rem; font-size:0.95rem;"><strong>Rythme d'intervention :</strong> Hebdomadaire, mensuel ou trimestriel.</p>
+                    <p style="margin-bottom:1rem; font-size:0.95rem;"><strong>Matériel utilisé :</strong> DJI Matrice 400 / 4E, caméras 4K.</p>
+                    <p style="margin-bottom:1.5rem; font-size:0.95rem;"><strong>Secteurs :</strong> Promoteurs, Constructeurs BTP, Collectivités.</p>
+                    <button class="btn" onclick="openQuoteModal()" style="width: 100%;">Demander un devis</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE IA & DIAGNOSTICS -->
+    <div id="ai" class="page">
+        <section class="hero" style="background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);">
+            <h1>L'Intelligence Artificielle & L'Automations par Drone</h1>
+            <p>Automatisation du traitement des données visuelles/thermiques et surveillance autonome 24/7 par station d'accueil autonome.</p>
+        </section>
+
+        <section class="container">
+            <!-- SERVICE : DJI DOCK 3 -->
+            <div class="ai-feature-card" style="border-top-color: var(--secondary);">
+                <h3><i class="fa-solid fa-tower-observation"></i> Inspections & Surveillances Automatisées avec DJI Dock 3</h3>
+                <p>Découvrez le summum de l'inspection autonome. Grâce à la station autonome <strong>DJI Dock 3</strong>, déployez des drones directement installés sur vos sites sensibles (usines, parcs photovoltaïques, chantiers, sites Seveso) pour des missions de ronde, de surveillance et de diagnostic 100 % automatisées sans présence humaine requise sur place.</p>
+                
+                <!-- DJI DOCK 3 Image intégrée -->
+                <div class="photo-box-container">
+                    <img src="DJIDOCK3.jpg" alt="DJI Dock 3 Station Autonome" class="dock-img">
+                </div>
+
+                <ul class="ai-list">
+                    <li><strong>Missions de Vol Autonomes & Programmées :</strong> Décollage, inspection thermique/optique, retour et rechargement automatique dans le Dock sans aucune intervention technique.</li>
+                    <li><strong>Surveillance & Levée de Doute 24/7 :</strong> Déclenchement automatique de patrouilles aériennes en cas d'intrusion, de fuite thermique ou de détection d'incendie par capteurs au sol.</li>
+                    <li><strong>Gestion à Distance via DJI FlightHub 2 :</strong> Suivi des flux vidéo en direct HD, contrôle de la flotte depuis n'importe quel poste de régulation ou centrale d'alarme.</li>
+                    <li><strong>Résistance Extrême (IP55) & Charge Rapide :</strong> Conçu pour fonctionner sous toutes les conditions météo (pluie, vent, gel) avec recharge rapide du drone en moins de 25 minutes.</li>
+                </ul>
+            </div>
+
+            <div class="ai-feature-card">
+                <h3><i class="fa-solid fa-solar-panel"></i> Inspection de Centrales & Parc Photovoltaïques par IA</h3>
+                <p>L'inspection manuelle des grands parcs solaires ou des toitures photovoltaïques peut prendre des jours. En associant nos drones thermiques (ex. DJI Matrice 4T) à des algorithmes d'IA de vision par ordinateur, nous automatisons et accélérons le diagnostic complet de vos installations.</p>
+                <ul class="ai-list">
+                    <li><strong>Détection automatique des points chauds (Hotspots) :</strong> Identification instantanée des cellules défectueuses provoquant des surchauffes et des pertes de rendement.</li>
+                    <li><strong>Cartographie des défauts structurels :</strong> Repérage des diodes de by-pass défaillantes, des chaînes de panneaux ouvertes (strings) et des fissures (micro-cracks).</li>
+                    <li><strong>Géolocalisation précise des anomalies :</strong> Génération automatique d'un rapport orthomosaïque radiométrique intégrant les coordonnées GPS de chaque panneau à remplacer ou réparer.</li>
+                    <li><strong>Gain de productivité :</strong> Inspection jusqu'à 10 fois plus rapide qu'un contrôle manuel au sol avec un rapport d'audit normé.</li>
+                </ul>
+            </div>
+
+            <div class="ai-feature-card">
+                <h3><i class="fa-solid fa-helmet-safety"></i> Suivi de Chantier & Diagnostic BTP assistés par IA</h3>
+                <p>Pour le bâtiment, la promotion immobilière et les ouvrages d'art, l'IA permet d'analyser des milliers de clichés haute définition en un temps record pour sécuriser les chantiers et anticiper les désordres structuraux.</p>
+                <ul class="ai-list">
+                    <li><strong>Détection précoce des désordres :</strong> Algorithmes entraînés à repérer automatiquement les micro-fissures sur le béton, l'effritement des façades, la corrosion des armatures métalliques ou les infiltrations d'eau.</li>
+                    <li><strong>Comparaison Modèle 3D vs Maquette BIM :</strong> Superposition dynamique entre les relevés drone par photogrammétrie et le modèle numérique théorique pour mesurer l'avancement exact des travaux.</li>
+                    <li><strong>Suivi automatique des volumes et cubatures :</strong> Calcul automatique des stocks de matériaux (terrassement, remblais) à partir des nuages de points générés.</li>
+                    <li><strong>Sécurité des sites :</strong> Repérage automatisé du port des EPI et analyse des risques sur les zones de travail en hauteur.</li>
+                </ul>
             </div>
         </section>
     </div>
@@ -616,7 +1240,6 @@
             <!-- SECTION ÉQUIPEMENTS & OUTILS ATELIER -->
             <h2 class="section-title" style="margin-top: 5rem;">Équipements & Infras de l'Atelier</h2>
             <div class="equipment-grid">
-                
                 <div class="equipment-card">
                     <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Station de soudage professionnelle pour électronique" class="equipment-img" style="object-fit:cover; padding:0;">
                     <div class="equipment-body">
@@ -634,41 +1257,53 @@
                         <span class="equipment-badge">Banc d'Essai & Diagnostic Hardware</span>
                     </div>
                 </div>
-
             </div>
         </section>
     </div>
 
-    <!-- PAGE CONTACT -->
-    <div id="contact" class="page">
-        <section class="container">
-            <h2 class="section-title">Contactez Drone Vérif</h2>
-            <div class="contact-form">
-                <form onsubmit="alert('Message envoyé avec succès !'); return false;">
-                    <div class="form-group">
-                        <label>Nom / Entreprise</label>
-                        <input type="text" required placeholder="Votre nom ou le nom de votre société">
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" required placeholder="votre@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label>Service Recherché</label>
-                        <select>
-                            <option>Inspection Technique (BTP, Thermique, Photogrammétrie)</option>
-                            <option>Réparation / Maintenance de Drone</option>
-                            <option>Autre demande</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea rows="5" required placeholder="Décrivez votre besoin ou le modèle de votre drone..."></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width:100%;">Envoyer la demande</button>
-                </form>
-            </div>
-        </section>
+    <!-- MODAL DEMANDE DE DEVIS -->
+    <div id="quoteModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeQuoteModal()">&times;</span>
+            <h2 style="color:var(--primary); margin-bottom:0.5rem;"><i class="fa-solid fa-file-signature"></i> Demande de Devis</h2>
+            <p style="color:var(--gray); margin-bottom:1.5rem; font-size:0.95rem;">Remplissez ce formulaire, nous vous répondrons sous 24h ouvrées.</p>
+
+            <form onsubmit="handleQuoteSubmit(event)">
+                <div class="form-group">
+                    <label for="fullName">Nom / Nom de l'entreprise *</label>
+                    <input type="text" id="fullName" required placeholder="Ex: Jean Dupont / ABC Bâtiment">
+                </div>
+                <div class="form-group">
+                    <label for="email">Adresse email *</label>
+                    <input type="email" id="email" required placeholder="nom@exemple.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone" placeholder="06 12 34 56 78">
+                </div>
+                <div class="form-group">
+                    <label for="serviceType">Type de prestation souhaitée *</label>
+                    <select id="serviceType" required>
+                        <option value="">-- Sélectionnez une prestation --</option>
+                        <option value="inspection">Inspection technique / BTP / Toiture</option>
+                        <option value="eolienne">Inspection d'éoliennes</option>
+                        <option value="dock">Surveillance / Inspection autonome DJI Dock 3</option>
+                        <option value="photogrammetrie">Photogrammétrie & Modélisation 3D</option>
+                        <option value="thermographie">Thermographie & Infrarouge</option>
+                        <option value="photovoltaique">Audit & Diagnostic Photovoltaïque</option>
+                        <option value="chantier">Inspection de chantier</option>
+                        <option value="Dock3">Installation de drone autonome DJI Dock 3</option>
+                        <option value="maintenance">Maintenance / Réparation de drone</option>
+                        <option value="autre">Autre demande sur-mesure</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="details">Détails de votre projet / Besoins *</label>
+                    <textarea id="details" rows="4" required placeholder="Lieu de l'intervention, contraintes d'accès, surface, modèle du drone à réparer..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width:100%; padding:0.9rem;">Envoyer la demande</button>
+            </form>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -685,12 +1320,43 @@
             const navLinks = document.querySelectorAll('nav a');
             navLinks.forEach(link => link.classList.remove('active'));
 
-            document.getElementById(pageId).classList.add('active');
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Gestion de la surbrillance de l'onglet actif dans le menu principal
+            let mainNavId = pageId;
+            if (pageId.startsWith('service-')) {
+                mainNavId = 'inspection';
+            }
             
-            const activeNav = document.getElementById('nav-' + pageId);
+            const activeNav = document.getElementById('nav-' + mainNavId);
             if(activeNav) activeNav.classList.add('active');
 
             window.scrollTo(0, 0);
+        }
+
+        /* --- Modal Devis --- */
+        function openQuoteModal() {
+            document.getElementById('quoteModal').style.display = 'flex';
+        }
+
+        function closeQuoteModal() {
+            document.getElementById('quoteModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('quoteModal');
+            if (event.target === modal) {
+                closeQuoteModal();
+            }
+        }
+
+        function handleQuoteSubmit(event) {
+            event.preventDefault();
+            alert('Votre demande de devis a été envoyée avec succès ! Nous vous recontacterons très rapidement.');
+            closeQuoteModal();
         }
     </script>
 </body>
