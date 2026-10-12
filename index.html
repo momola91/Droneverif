@@ -146,6 +146,35 @@
             opacity: 0.9;
         }
 
+/* Conteneur des boutons du bandeau d'accueil */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+/* Style du bouton secondaire transparent */
+.btn-outline {
+    background: transparent !important;
+    border: 2px solid var(--white) !important;
+}
+
+/* Sur mobile, on force les boutons à prendre toute la largeur s'ils se superposent */
+@media (max-width: 768px) {
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+        margin-left: 0 !important;
+    }
+}
         /* --- Image Hero Banner pour les pages de détails d'inspection --- */
         .hero-image-banner {
             position: relative;
@@ -633,29 +662,60 @@
         }
 
                 @media (max-width: 768px) {
-            .nav-container { 
-                flex-direction: column; 
-                padding: 0.5rem 1rem; 
-                gap: 0.5rem; 
-            }
-            .logo-img { 
-                height: 60px; /* Réduit la hauteur du logo sur mobile pour ne pas saturer l'écran */
-            }
-            .nav-right { 
-                flex-direction: column; 
-                gap: 0.5rem; 
-                width: 100%;
-                justify-content: center;
-            }
-            .hero h1.single-line-title { font-size: 1.4rem; white-space: normal; }
-            .hero h1, .hero-image-content h1 { font-size: 2rem; }
-            nav ul { 
-                flex-wrap: wrap; 
-                justify-content: center; 
-                gap: 0.5rem 1rem; 
-            }
-            nav a {
-                font-size: 0.85rem;
+    header {
+        padding: 0.5rem 0;
+    }
+
+    .nav-container { 
+        flex-direction: column; 
+        padding: 0.5rem 1rem; 
+        gap: 0.75rem; 
+        align-items: center;
+    }
+
+    /* Réduction et centrage du logo sur mobile */
+    .logo-container {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .logo-img { 
+        height: 60px !important; /* Réduit la hauteur pour ne pas écraser l'écran */
+        width: auto;
+    }
+
+    .nav-right { 
+        flex-direction: column; 
+        gap: 0.75rem; 
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    nav ul { 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        gap: 0.5rem 0.8rem; 
+    }
+
+    nav a {
+        font-size: 0.85rem;
+    }
+
+    /* Ajustement du bouton Devis sur mobile */
+    .nav-right .btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Ajustement du titre principal pour qu'il ne dépasse pas de l'écran */
+    .hero h1.single-line-title { 
+        font-size: 1.3rem !important; 
+        white-space: normal !important; 
+        line-height: 1.3;
             }
         }
         .photo-box-container {
@@ -714,8 +774,10 @@
         <section class="hero">
             <h1 class="single-line-title">Expertise Aérienne & Maintenance Drone sur Mesure</h1>
             <p>Drone Vérif réalise pour vos actifs des diagnostics techniques poussés et garantit la conformité opérationnelle de votre flotte.</p>
-            <button class="btn" onclick="openQuoteModal()">Demander un devis gratuit</button>
-            <button class="btn" style="background:transparent; border:2px solid white; margin-left:10px;" onclick="showPage('inspection')">Inspection technique</button>
+            <div class="hero-buttons">
+                <button class="btn" onclick="openQuoteModal()">Demander un devis gratuit</button>
+                <button class="btn btn-outline" onclick="showPage('inspection')">Inspection technique</button>
+            </div>
         </section>
 
         <section class="container">
