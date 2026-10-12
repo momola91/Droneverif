@@ -674,6 +674,16 @@
             display: block;
         }
     </style>
+
+<!-- Script EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init({
+            publicKey: "FScQ0WczaoOJkxoi1",
+          });
+       })();
+    </script>
 </head>
 <body>
 
@@ -1288,22 +1298,23 @@
             <h2 style="color:var(--primary); margin-bottom:0.5rem;"><i class="fa-solid fa-file-signature"></i> Demande de Devis</h2>
             <p style="color:var(--gray); margin-bottom:1.5rem; font-size:0.95rem;">Remplissez ce formulaire, nous vous répondrons sous 24h ouvrées.</p>
 
+            <!-- AJOUT DE LA BALISE <form ICI AVEC L'ÉVÉNEMENT ONCOOK -->
             <form onsubmit="handleQuoteSubmit(event)">
                 <div class="form-group">
                     <label for="fullName">Nom / Nom de l'entreprise *</label>
-                    <input type="text" id="fullName" required placeholder="Ex: Jean Dupont / ABC Bâtiment">
+                    <input type="text" id="fullName" name="fullName" required placeholder="Ex: Jean Dupont / ABC Bâtiment">
                 </div>
                 <div class="form-group">
                     <label for="email">Adresse email *</label>
-                    <input type="email" id="email" required placeholder="nom@exemple.com">
+                    <input type="email" id="email" name="email" required placeholder="nom@exemple.com">
                 </div>
                 <div class="form-group">
                     <label for="phone">Téléphone</label>
-                    <input type="tel" id="phone" placeholder="06 12 34 56 78">
+                    <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78">
                 </div>
                 <div class="form-group">
                     <label for="serviceType">Type de prestation souhaitée *</label>
-                    <select id="serviceType" required>
+                    <select id="serviceType" name="serviceType" required>
                         <option value="">-- Sélectionnez une prestation --</option>
                         <option value="inspection">Inspection technique / BTP / Toiture</option>
                         <option value="eolienne">Inspection d'éoliennes</option>
@@ -1319,10 +1330,11 @@
                 </div>
                 <div class="form-group">
                     <label for="details">Détails de votre projet / Besoins *</label>
-                    <textarea id="details" rows="4" required placeholder="Lieu de l'intervention, contraintes d'accès, surface, modèle du drone à réparer..."></textarea>
+                    <textarea id="details" name="details" rows="4" required placeholder="Lieu de l'intervention, contraintes d'accès, surface, modèle du drone à réparer..."></textarea>
                 </div>
                 <button type="submit" class="btn" style="width:100%; padding:0.9rem;">Envoyer la demande</button>
             </form>
+            <!-- FIN DE LA BALISE </form> -->
         </div>
     </div>
 
@@ -1374,10 +1386,19 @@
         }
 
         function handleQuoteSubmit(event) {
-            event.preventDefault();
-            alert('Votre demande de devis a été envoyée avec succès ! Nous vous recontacterons très rapidement.');
+    event.preventDefault();
+    
+    // Envoie les données du formulaire à EmailJS
+    emailjs.sendForm('VOTRE_SERVICE_ID', 'VOTRE_TEMPLATE_ID', event.target)
+        .then(function() {
+            alert('Votre demande de devis a bien été envoyée ! Nous vous recontacterons sous 24h.');
             closeQuoteModal();
-        }
+            event.target.reset();
+        }, function(error) {
+            alert('Une erreur est survenue lors de l\'envoi. Veuillez réessayer.');
+            console.error('Erreur EmailJS:', error);
+        });
+}
     </script>
 </body>
 </html>
