@@ -663,13 +663,13 @@
 
                 @media (max-width: 768px) {
     header {
-        padding: 0.5rem 0;
+        padding: 0 !important; /* Supprime tout le vide inutile autour du header sur mobile */
     }
 
     .nav-container { 
         flex-direction: column; 
-        padding: 0.5rem 1rem; 
-        gap: 0.75rem; 
+        padding: 0.25rem 0.5rem !important; /* Resserre les bords haut/bas et gauches/droites */
+        gap: 0.25rem !important; /* Supprime le grand espace entre le logo et les titres du menu */
         align-items: center;
     }
 
@@ -686,7 +686,7 @@
 
     .nav-right { 
         flex-direction: column; 
-        gap: 0.75rem; 
+        gap: 0.25rem; 
         width: 100%;
         align-items: center;
         justify-content: center;
@@ -695,7 +695,7 @@
     nav ul { 
         flex-wrap: wrap; 
         justify-content: center; 
-        gap: 0.5rem 0.8rem; 
+        gap: 0.4rem 0.8rem; 
     }
 
     nav a {
