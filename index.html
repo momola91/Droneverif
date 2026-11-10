@@ -1480,26 +1480,25 @@
         }
 
         function handleQuoteSubmit(event) {
-    event.preventDefault();
-    
-    const form = event.target;
+            event.preventDefault();
+            
+            const form = event.target;
 
-    grecaptcha.ready(function() {
-        grecaptcha.execute('VOTRE_CLE_DU_SITE', {action: 'submit'}).then(function(token) {
-            // Injecte le jeton de sécurité dans le champ caché
-            document.getElementById('g-recaptcha-response').value = token;
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LdlcBkuAAAAALSHzY_L8YebxFtsdKX5gvo9RNof', {action: 'submit'}).then(function(token) {
+                    // Injecte le jeton de sécurité dans le champ caché
+                    document.getElementById('g-recaptcha-response').value = token;
 
-            // Envoie les données du formulaire (y compris le token) à EmailJS
-            emailjs.sendForm('service_latznj4', 'template_md6f4fd', form)
-                .then(function() {
-                    alert('Votre demande de devis a bien été envoyée ! Nous vous recontacterons sous 24h.');
-                    closeQuoteModal();
-                    form.reset();
-                }, function(error) {
-                    alert('Une erreur est survenue lors de l\'envoi. Veuillez réessayer.');
-                    console.error('Erreur EmailJS:', error);
-        });
-}
-    </script>
-</body>
-</html>
+                    // Envoie les données du formulaire à EmailJS
+                    emailjs.sendForm('service_latznj4', 'template_md6f4fd', form)
+                        .then(function() {
+                            alert('Votre demande de devis a bien été envoyée ! Nous vous recontacterons sous 24h.');
+                            closeQuoteModal();
+                            form.reset();
+                        }, function(error) {
+                            alert('Une erreur est survenue lors de l\'envoi. Veuillez réessayer.');
+                            console.error('Erreur EmailJS:', error);
+                        });
+                });
+            });
+        }
