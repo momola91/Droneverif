@@ -108,16 +108,24 @@
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
-/* Justification propre des paragraphes de contenu */
-        .card p,
+/* Grands blocs de texte : justification sans coupure de mots */
 .about-card p,
 .service-detail-box p,
-.service-list li,
-.equipment-body p,
-.alert-box p,
-.ai-feature-card p,
-.ai-list li {
+.ai-feature-card p {
     text-align: justify;
+    hyphens: none;
+    -webkit-hyphens: none;
+    word-break: normal;
+}
+
+/* Petites cases et listes : alignement à gauche pour garder un espacement régulier */
+.card p,
+.equipment-body p,
+.highlight-item p,
+.service-list li,
+.ai-list li,
+.alert-box p {
+    text-align: left;
     hyphens: none;
     -webkit-hyphens: none;
     word-break: normal;
@@ -318,6 +326,21 @@
     opacity: 0.95;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
         }
+
+    /* Alignement à gauche sur mobile pour éviter les grands espaces entre les mots */
+    .about-card p,
+    .service-detail-box p,
+    .ai-feature-card p,
+    .card p,
+    .equipment-body p,
+    .highlight-item p,
+    .service-list li,
+    .ai-list li,
+    .alert-box p {
+        text-align: left;
+        hyphens: none;
+        -webkit-hyphens: none;
+    }
 
         /* --- Target Audience Tags --- */
         .target-box {
